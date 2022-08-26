@@ -35,8 +35,7 @@
     },
     "autoload": {
         "psr-4": {
-            "FilipFonal\\FilamentLogManager\\": "src",
-            "FilipFonal\\FilamentLogManager\\Database\\Factories\\": "database/factories"
+            "FilipFonal\\FilamentLogManager\\": "src"
         }
     },
     "autoload-dev": {
