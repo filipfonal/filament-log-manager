@@ -23,7 +23,6 @@ class FilamentLogManagerServiceProvider extends PluginServiceProvider
             ->hasConfigFile()
             ->hasViews()
             ->hasTranslations()
-            ->hasMigration('create_filament-log-manager_table')
             ->hasCommand(FilamentLogManagerCommand::class);
     }
 }

@@ -2,8 +2,8 @@
 
 return [
     'navigation_label' => 'Logs',
+    'navigation_group' => 'System',
     'title' => 'Logs',
-    'group' => 'System',
     'search_placeholder' => 'Select or search a log file',
     'no_logs' => 'No Logs to display',
     'delete' => 'Delete',
