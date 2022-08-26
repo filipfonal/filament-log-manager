@@ -51,7 +51,7 @@ class Logs extends Page
                 ->searchable()
                 ->reactive()
                 ->disableLabel()
-                ->placeholder(__('log::filament-laravel-log.forms.search.placeholder'))
+                ->placeholder(__('filament-log-manager::translations.search_placeholder'))
                 ->options(fn () => $this->getFileNames($this->getFinder())->take(5))
                 ->getSearchResultsUsing(fn (string $query) => $this->getFileNames($this->getFinder()->name("*{$query}*"))),
         ];
@@ -70,13 +70,12 @@ class Logs extends Page
             ->ignoreDotFiles(true)
             ->ignoreUnreadableDirs()
             ->files()
-            ->in(config('filament-laravel-log.logsDir'))
-            ->notName(config('filament-laravel-log.exclude'));
+            ->in(config('filament-log-manager.logs_directory'));
     }
 
     protected static function getNavigationIcon(): string
     {
-        return 'heroicon-o-server';
+        return config('filament-log-manager.navigation_icon');
     }
 
     protected static function getNavigationLabel(): string
@@ -89,8 +88,8 @@ class Logs extends Page
         return __('filament-log-manager::translations.title');
     }
 
-    protected static function getNavigationGroup(): string
+    protected static function getNavigationGroup(): ?string
     {
-        return __('filament-log-manager::translations.group');
+        return config('filament-log-manager.navigation_group') ? __('filament-log-manager::translations.group') : null;
     }
 }

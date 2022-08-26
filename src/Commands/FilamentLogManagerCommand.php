@@ -8,7 +8,7 @@ class FilamentLogManagerCommand extends Command
 {
     public $signature = 'filament-log-manager';
 
-    public $description = 'My command';
+    public $description = 'Install log manager';
 
     public function handle(): int
     {

@@ -5,12 +5,12 @@
         </div>
         <div class="w-auto ml-2">
             <x-filament::button :disabled="is_null($this->logFile)" type="button" color="danger">
-                Usuń
+                {{ __('filament-log-manager::translations.delete') }}
             </x-filament::button>
         </div>
         <div class="w-auto ml-2">
             <x-filament::button :disabled="is_null($this->logFile)" type="button" color="primary">
-                Pobierz
+                {{ __('filament-log-manager::translations.download') }}
             </x-filament::button>
         </div>
     </div>
@@ -43,7 +43,7 @@
                         </div>
                     </div>
             @empty
-                <h3 class="text-center">No Logs to display.</h3>
+                <h3 class="text-center">{{ __('filament-log-manager::translations.no_logs') }}</h3>
             @endforelse
             </div>
         </div>
