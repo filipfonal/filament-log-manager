@@ -46,7 +46,7 @@ class LogViewer
     {
         $file = self::pathToLogFile($file);
 
-        if (! File::exists($file)) {
+        if (!File::exists($file)) {
             throw new Exception(__('filament-log-manager::translations.no_such_file'));
         }
 
@@ -108,7 +108,7 @@ class LogViewer
             return $file;
         }
 
-        $file = $logsPath.'/'.$file;
+        $file = $logsPath . '/' . $file;
 
         if (dirname($file) !== $logsPath) {
             throw new Exception(__('filament-log-manager::translations.no_such_file'));

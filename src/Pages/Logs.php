@@ -28,7 +28,7 @@ class Logs extends Page
      */
     public function getLogs(): Collection
     {
-        if (! $this->logFile) {
+        if (!$this->logFile) {
             return collect([]);
         }
 
@@ -42,7 +42,7 @@ class Logs extends Page
      */
     public function download(): BinaryFileResponse
     {
-        if (! config('filament-log-manager.allow_download')) {
+        if (!config('filament-log-manager.allow_download')) {
             abort(403);
         }
 
@@ -54,7 +54,7 @@ class Logs extends Page
      */
     public function delete(): bool
     {
-        if (! config('filament-log-manager.allow_delete')) {
+        if (!config('filament-log-manager.allow_delete')) {
             abort(403);
         }
 
