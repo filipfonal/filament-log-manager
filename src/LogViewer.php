@@ -4,7 +4,7 @@ namespace FilipFonal\FilamentLogManager;
 
 use Exception;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
-use Illuminate\Filesystem\Filesystem;
+use Illuminate\Support\Facades\File;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
 
@@ -34,7 +34,7 @@ class LogViewer
         'processed',
     ];
 
-    const MAX_FILE_SIZE = 52428800;
+    private const MAX_FILE_SIZE = 52428800;
 
     /**
      * @throws ContainerExceptionInterface
@@ -42,23 +42,20 @@ class LogViewer
      * @throws FileNotFoundException
      * @throws Exception
      */
-    public function getAllForFile(string $file): array
+    public static function getAllForFile(string $file): array
     {
-        /** @var Filesystem $filesystem */
-        $filesystem = app(Filesystem::class);
+        $file = self::pathToLogFile($file);
 
-        $file = $this->pathToLogFile($file);
-
-        if (!$filesystem->exists($file)) {
-            throw new Exception('No such log file');
+        if (!File::exists($file)) {
+            throw new Exception(__('filament-log-manager::translations.no_such_file'));
         }
 
-        if ($filesystem->size($file) > self::MAX_FILE_SIZE) {
-            throw new Exception('File is too large');
+        if (File::size($file) > self::MAX_FILE_SIZE) {
+            throw new Exception(__('filament-log-manager::translations.file_too_large'));
         }
 
         $logs = [];
-        $file = $filesystem->get($file);
+        $file = File::get($file);
         $pattern = '/\[\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\].*/';
 
         preg_match_all($pattern, $file, $headings);
@@ -103,21 +100,18 @@ class LogViewer
     /**
      * @throws Exception
      */
-    private function pathToLogFile(string $file): string
+    public static function pathToLogFile(string $file): string
     {
-        /** @var Filesystem $filesystem */
-        $filesystem = app(Filesystem::class);
-
         $logsPath = storage_path('logs');
 
-        if ($filesystem->exists($file)) {
+        if (File::exists($file)) {
             return $file;
         }
 
         $file = $logsPath . '/' . $file;
 
         if (dirname($file) !== $logsPath) {
-            throw new Exception('No such log file');
+            throw new Exception(__('filament-log-manager::translations.no_such_file'));
         }
 
         return $file;

@@ -2,15 +2,18 @@
 
 namespace FilipFonal\FilamentLogManager\Pages;
 
+use Exception;
 use Filament\Forms\Components\Select;
 use Filament\Pages\Page;
 use FilipFonal\FilamentLogManager\LogViewer;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\File;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Finder\SplFileInfo;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class Logs extends Page
 {
@@ -23,15 +26,45 @@ class Logs extends Page
      * @throws NotFoundExceptionInterface
      * @throws FileNotFoundException
      */
-    private function getLogs(): Collection
+    public function getLogs(): Collection
     {
         if (!$this->logFile) {
             return collect([]);
         }
 
-        $logs = (new LogViewer())->getAllForFile($this->logFile);
+        $logs = LogViewer::getAllForFile($this->logFile);
 
         return collect($logs);
+    }
+
+    /**
+     * @throws Exception
+     */
+    public function download(): BinaryFileResponse
+    {
+        if (!config('filament-log-manager.allow_download')) {
+            abort(403);
+        }
+
+        return response()->download(LogViewer::pathToLogFile($this->logFile));
+    }
+
+    /**
+     * @throws Exception
+     */
+    public function delete(): bool
+    {
+        if (!config('filament-log-manager.allow_delete')) {
+            abort(403);
+        }
+
+        if (File::delete(LogViewer::pathToLogFile($this->logFile))) {
+            $this->logFile = null;
+
+            return true;
+        }
+
+        abort(404, __('filament-log-manager::translations.no_such_file'));
     }
 
     protected function getForms(): array
