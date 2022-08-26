@@ -46,7 +46,7 @@ class LogViewer
     {
         $file = self::pathToLogFile($file);
 
-        if (!File::exists($file)) {
+        if (! File::exists($file)) {
             throw new Exception(__('filament-log-manager::translations.no_such_file'));
         }
 
@@ -60,7 +60,7 @@ class LogViewer
 
         preg_match_all($pattern, $file, $headings);
 
-        if (!is_array($headings)) {
+        if (! is_array($headings)) {
             return $logs;
         }
 
@@ -76,7 +76,7 @@ class LogViewer
                     if (strpos(strtolower($h[$i]), '.'.$level) || strpos(strtolower($h[$i]), $level.':')) {
                         $pattern = '/^\[(?P<date>(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}))\](?:.*?(?P<context>(\w+))\.|.*?)'.$level.': (?P<text>.*?)(?P<in_file> in .*?:[0-9]+)?$/i';
                         preg_match($pattern, $h[$i], $current);
-                        if (!isset($current['text'])) {
+                        if (! isset($current['text'])) {
                             continue;
                         }
 
@@ -108,7 +108,7 @@ class LogViewer
             return $file;
         }
 
-        $file = $logsPath . '/' . $file;
+        $file = $logsPath.'/'.$file;
 
         if (dirname($file) !== $logsPath) {
             throw new Exception(__('filament-log-manager::translations.no_such_file'));
