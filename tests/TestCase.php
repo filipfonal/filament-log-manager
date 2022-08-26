@@ -2,9 +2,9 @@
 
 namespace FilipFonal\FilamentLogManager\Tests;
 
+use FilipFonal\FilamentLogManager\FilamentLogManagerServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
-use FilipFonal\FilamentLogManager\FilamentLogManagerServiceProvider;
 
 class TestCase extends Orchestra
 {

@@ -28,7 +28,7 @@ class Logs extends Page
      */
     public function getLogs(): Collection
     {
-        if (!$this->logFile) {
+        if (! $this->logFile) {
             return collect([]);
         }
 

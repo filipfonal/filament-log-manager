@@ -10,12 +10,13 @@ use Spatie\LaravelPackageTools\Package;
 class FilamentLogManagerServiceProvider extends PluginServiceProvider
 {
     protected array $styles = [
-        'filament-log-manager-styles' => __DIR__ . '/../resources/css/styles.css',
+        'filament-log-manager-styles' => __DIR__.'/../resources/css/styles.css',
     ];
 
     protected array $pages = [
         Logs::class,
     ];
+
     public function configurePackage(Package $package): void
     {
         $package
