@@ -3,10 +3,12 @@
 namespace FilipFonal\FilamentLogManager\Pages;
 
 use Filament\Forms\Components\Select;
-use Filament\Pages\Actions\Action;
 use Filament\Pages\Page;
 use FilipFonal\FilamentLogManager\LogViewer;
+use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Support\Collection;
+use Psr\Container\ContainerExceptionInterface;
+use Psr\Container\NotFoundExceptionInterface;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Finder\SplFileInfo;
 
@@ -16,39 +18,20 @@ class Logs extends Page
 
     public ?string $logFile = null;
 
-    protected function getActions(): array
-    {
-        return [
-            Action::make('settings')
-                ->disabled($this->logFile === null)
-                ->label('Download')
-                ->action('openSettingsModal'),
-        ];
-    }
-
-    protected function getViewData(): array
-    {
-        return [
-            'logs' => $this->getLogs(),
-        ];
-    }
-
+    /**
+     * @throws ContainerExceptionInterface
+     * @throws NotFoundExceptionInterface
+     * @throws FileNotFoundException
+     */
     private function getLogs(): Collection
     {
         if (!$this->logFile) {
             return collect([]);
         }
 
-        LogViewer::setFile($this->logFile);
-
-        $logs = LogViewer::all();
+        $logs = (new LogViewer())->getAllForFile($this->logFile);
 
         return collect($logs);
-    }
-
-    public function openSettingsModal(): void
-    {
-        dd('open-settings-modal');
     }
 
     protected function getForms(): array
