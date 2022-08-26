@@ -1,6 +1,3 @@
-
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/support-ukraine.svg?t=1" />](https://supportukrainenow.org)
-
 # Filament Log Manager
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/filipfonal/filament-log-manager.svg?style=flat-square)](https://packagist.org/packages/filipfonal/filament-log-manager)
@@ -10,13 +7,13 @@
 
 This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
 
-## Support us
+![](./.github/resources/screenshot.png)
 
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/filament-log-manager.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/filament-log-manager)
+## Filament Admin Panel
 
-We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
+This package is tailored for [Filament Admin Panel](https://filamentphp.com/).
 
-We highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using. You'll find our address on [our contact page](https://spatie.be/about-us). We publish all received postcards on [our virtual postcard wall](https://spatie.be/open-source/postcards).
+Make sure you have installed the admin panel before you continue with the installation. You can check the [documentation here](https://filamentphp.com/docs/admin)
 
 ## Installation
 
@@ -26,38 +23,21 @@ You can install the package via composer:
 composer require filipfonal/filament-log-manager
 ```
 
-You can publish and run the migrations with:
-
-```bash
-php artisan vendor:publish --tag="filament-log-manager-migrations"
-php artisan migrate
-```
-
 You can publish the config file with:
 
 ```bash
 php artisan vendor:publish --tag="filament-log-manager-config"
 ```
 
-This is the contents of the published config file:
-
-```php
-return [
-];
-```
-
-Optionally, you can publish the views using
+You can publish translations files with:
 
 ```bash
-php artisan vendor:publish --tag="filament-log-manager-views"
+php artisan vendor:publish --tag="filament-log-manager-translations"
 ```
 
 ## Usage
 
-```php
-$filamentLogManager = new FilipFonal\FilamentLogManager();
-echo $filamentLogManager->echoPhrase('Hello, FilipFonal!');
-```
+After installing, package is ready to use.
 
 ## Testing
 
