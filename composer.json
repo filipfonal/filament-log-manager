@@ -35,14 +35,8 @@
             "FilipFonal\\FilamentLogManager\\": "src"
         }
     },
-    "autoload-dev": {
-        "psr-4": {
-            "FilipFonal\\FilamentLogManager\\Tests\\": "tests"
-        }
-    },
     "scripts": {
         "analyse": "vendor/bin/phpstan analyse",
-        "test-coverage": "vendor/bin/pest --coverage",
         "format": "vendor/bin/pint"
     },
     "config": {
