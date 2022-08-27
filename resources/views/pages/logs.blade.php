@@ -39,7 +39,7 @@
                     >
                         <a
                                 @click="isCardOpen = isCardOpen == {{$key}} ? null : {{$key}} "
-                                style="cursor: pointer"
+                                style="cursor: pointer;"
                                 class="block overflow-hidden rounded-t-xl text-white"
                         >
                                 <span>[{{ $log['date'] }}]</span>
@@ -51,7 +51,7 @@
                             <p>{{$log['text']}}</p>
                             @if(!empty($log['stack']))
                                 <div class="bg-gray-100 dark:bg-gray-900 mt-4 p-4 text-sm opacity-40">
-                                    <pre class="overflow-scroll"><code>{{ trim($log['stack']) }}</code></pre>
+                                    <pre style="overflow-x: scroll;"><code>{{ trim($log['stack']) }}</code></pre>
                                 </div>
                             @endif
                         </div>
