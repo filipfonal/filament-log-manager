@@ -5,9 +5,10 @@
 [![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/filipfonal/filament-log-manager/Fix%20PHP%20code%20style%20issues?label=code%20style)](https://github.com/filipfonal/filament-log-manager/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/filipfonal/filament-log-manager.svg?style=flat-square)](https://packagist.org/packages/filipfonal/filament-log-manager)
 
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
+This package allows you to view the Laravel application logs in a simple and clear way. Additional functionalities include the ability to download and delete log files.
 
-![](./.github/resources/screenshot.png)
+![](./.github/resources/screenshot_light_mode.png)
+![](./.github/resources/screenshot_dark_mode.png)
 
 ## Filament Admin Panel
 
@@ -37,7 +38,7 @@ php artisan vendor:publish --tag="filament-log-manager-translations"
 
 ## Usage
 
-After installing, package is ready to use.
+Once installed, the package is ready to use. You will be able to see it in your Filament admin panel.
 
 ## Testing
 
