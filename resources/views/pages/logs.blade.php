@@ -69,7 +69,7 @@
             <x-filament::modal.actions fullWidth="true">
                 <x-filament::button
                         type="button"
-                        x-on:click="isModalOpen = false"
+                        x-on:click="isOpen = false"
                         color="secondary"
                         outlined="true"
                         class="filament-page-modal-button-action"
@@ -78,7 +78,7 @@
                 </x-filament::button>
                 <x-filament::button
                         wire:click="delete"
-                        x-on:click="isModalOpen = false"
+                        x-on:click="isOpen = false"
                         type="button"
                         color="danger"
                         class="filament-page-modal-button-action"
