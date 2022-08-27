@@ -5,7 +5,7 @@
 [![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/filipfonal/filament-log-manager/Fix%20PHP%20code%20style%20issues?label=code%20style)](https://github.com/filipfonal/filament-log-manager/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/filipfonal/filament-log-manager.svg?style=flat-square)](https://packagist.org/packages/filipfonal/filament-log-manager)
 
-This package allows you to view the Laravel application logs in a simple and clear way. Additional functionalities include the ability to download and delete log files.
+A simple and clear interface to preview, download and delete Laravel log files using Filament Admin.
 
 ![](./.github/resources/screenshot_light_mode.png)
 
