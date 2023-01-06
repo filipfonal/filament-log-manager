@@ -26,7 +26,7 @@ class FilamentLogManagerServiceProvider extends PluginServiceProvider
     protected function getPages(): array
     {
         return [
-            config('filament-log-manager.page_class'),
+            config('filament-log-manager.page_class') ?? Logs::class,
         ];
     }
 }
