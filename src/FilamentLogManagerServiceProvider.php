@@ -13,10 +13,6 @@ class FilamentLogManagerServiceProvider extends PluginServiceProvider
         'filament-log-manager-styles' => __DIR__.'/../resources/css/styles.css',
     ];
 
-    protected array $pages = [
-        Logs::class,
-    ];
-
     public function configurePackage(Package $package): void
     {
         $package
@@ -25,5 +21,12 @@ class FilamentLogManagerServiceProvider extends PluginServiceProvider
             ->hasViews()
             ->hasTranslations()
             ->hasCommand(FilamentLogManagerCommand::class);
+    }
+
+    protected function getPages(): array
+    {
+        return [
+            config('filament-log-manager.page_class') ?? Logs::class,
+        ];
     }
 }
