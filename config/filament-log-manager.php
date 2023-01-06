@@ -1,5 +1,7 @@
 <?php
 
+use FilipFonal\FilamentLogManager\Pages\Logs;
+
 return [
     /**
      * Set true to display navigation item in the group.
@@ -26,4 +28,9 @@ return [
      * Allow downloading logs from the user interface.
      */
     'allow_download' => true,
+
+    /**
+     * Allow set custom logs page class.
+     */
+    'page_class' => Logs::class,
 ];
