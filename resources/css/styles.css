@@ -10,6 +10,10 @@
     background-color: rgb(34 211 238);
 }
 
+.bg-notice {
+    background-color: rgb(132 204 22);
+}
+
 .no-bottom-radius {
     border-bottom-left-radius: 0 !important;
     border-bottom-right-radius: 0 !important;

@@ -13,7 +13,7 @@ class LogViewer
     private const LOG_LEVEL_CLASSES = [
         'debug' => 'info',
         'info' => 'info',
-        'notice' => 'info',
+        'notice' => 'notice',
         'processed' => 'info',
         'warning' => 'warning',
         'error' => 'danger',
@@ -60,7 +60,7 @@ class LogViewer
 
         preg_match_all($pattern, $file, $headings);
 
-        if (! is_array($headings)) {
+        if (!is_array($headings)) {
             return $logs;
         }
 
@@ -73,10 +73,10 @@ class LogViewer
         foreach ($headings as $h) {
             for ($i = 0, $j = count($h); $i < $j; $i++) {
                 foreach (self::LOG_LEVELS as $level) {
-                    if (strpos(strtolower($h[$i]), '.'.$level) || strpos(strtolower($h[$i]), $level.':')) {
-                        $pattern = '/^\[(?P<date>(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}))\](?:.*?(?P<context>(\w+))\.|.*?)'.$level.': (?P<text>.*?)(?P<in_file> in .*?:[0-9]+)?$/i';
+                    if (strpos(strtolower($h[$i]), '.' . $level) || strpos(strtolower($h[$i]), $level . ':')) {
+                        $pattern = '/^\[(?P<date>(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}))\](?:.*?(?P<context>(\w+))\.|.*?)' . $level . ': (?P<text>.*?)(?P<in_file> in .*?:[0-9]+)?$/i';
                         preg_match($pattern, $h[$i], $current);
-                        if (! isset($current['text'])) {
+                        if (!isset($current['text'])) {
                             continue;
                         }
 

@@ -52,6 +52,17 @@ class Logs extends Page
     /**
      * @throws Exception
      */
+    public function copyAndEmpty()
+    {
+        file_put_contents(storage_path('logs/laravel_' . date('Y_m_d-H_i_s') . '.log'), file_get_contents(LogViewer::pathToLogFile($this->logFile)));
+        file_put_contents(LogViewer::pathToLogFile($this->logFile), '');
+
+        return true;
+    }
+
+    /**
+     * @throws Exception
+     */
     public function delete(): bool
     {
         if (!config('filament-log-manager.allow_delete')) {
