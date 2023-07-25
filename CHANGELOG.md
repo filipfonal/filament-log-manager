@@ -2,6 +2,22 @@
 
 All notable changes to `filament-log-manager` will be documented in this file.
 
+## 1.3.0 - 2023-07-25
+
+### What's Changed
+
+- Bump aglipanci/laravel-pint-action from 2.1.0 to 2.2.0 by @dependabot in https://github.com/filipfonal/filament-log-manager/pull/11
+- Bump dependabot/fetch-metadata from 1.3.6 to 1.4.0 by @dependabot in https://github.com/filipfonal/filament-log-manager/pull/13
+- Bump dependabot/fetch-metadata from 1.4.0 to 1.5.1 by @dependabot in https://github.com/filipfonal/filament-log-manager/pull/16
+- Bump dependabot/fetch-metadata from 1.5.1 to 1.6.0 by @dependabot in https://github.com/filipfonal/filament-log-manager/pull/18
+- add French translation by @klham in https://github.com/filipfonal/filament-log-manager/pull/17
+
+### New Contributors
+
+- @klham made their first contribution in https://github.com/filipfonal/filament-log-manager/pull/17
+
+**Full Changelog**: https://github.com/filipfonal/filament-log-manager/compare/1.2.0...1.3.0
+
 ## 1.2.0 - 2023-03-02
 
 ### What's Changed
