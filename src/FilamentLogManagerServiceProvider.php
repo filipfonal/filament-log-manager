@@ -13,10 +13,6 @@ class FilamentLogManagerServiceProvider extends PackageServiceProvider
 {
     public static string $name = 'filament-log-manager';
 
-    protected array $styles = [
-        'filament-log-manager-styles' => __DIR__.'/../resources/css/styles.css',
-    ];
-
     public function configurePackage(Package $package): void
     {
         $package
