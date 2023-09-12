@@ -37,8 +37,6 @@ class LogViewer
     private const MAX_FILE_SIZE = 52428800;
 
     /**
-     * @throws ContainerExceptionInterface
-     * @throws NotFoundExceptionInterface
      * @throws FileNotFoundException
      * @throws Exception
      */
@@ -60,7 +58,7 @@ class LogViewer
 
         preg_match_all($pattern, $file, $headings);
 
-        if (! is_array($headings)) {
+        if (!is_array($headings)) {
             return $logs;
         }
 
@@ -70,13 +68,13 @@ class LogViewer
             array_shift($stackTrace);
         }
 
-        foreach ($headings as $h) {
-            for ($i = 0, $j = count($h); $i < $j; $i++) {
+        foreach ($headings as $heading) {
+            for ($i = 0, $j = count($heading); $i < $j; $i++) {
                 foreach (self::LOG_LEVELS as $level) {
-                    if (strpos(strtolower($h[$i]), '.'.$level) || strpos(strtolower($h[$i]), $level.':')) {
+                    if (strpos(strtolower($heading[$i]), '.'.$level) || strpos(strtolower($heading[$i]), $level.':')) {
                         $pattern = '/^\[(?P<date>(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}))\](?:.*?(?P<context>(\w+))\.|.*?)'.$level.': (?P<text>.*?)(?P<in_file> in .*?:[0-9]+)?$/i';
-                        preg_match($pattern, $h[$i], $current);
-                        if (! isset($current['text'])) {
+                        preg_match($pattern, $heading[$i], $current);
+                        if (!isset($current['text'])) {
                             continue;
                         }
 

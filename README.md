@@ -35,6 +35,19 @@ You can publish translations files with:
 php artisan vendor:publish --tag="filament-log-manager-translations"
 ```
 
+Finally, register the plugin in the Filament Panel Provider (This is by default AdminPanelProvider.php)
+
+```php
+public function panel(Panel $panel): Panel
+{
+    return $panel
+        ->plugins([
+            ...
+            \FilipFonal\FilamentLogManager\FilamentLogManager::make(),
+        ]);
+}
+```
+
 ## Usage
 
 Once installed, the package is ready to use. You will be able to see it in your Filament admin panel.
