@@ -28,11 +28,11 @@
             </div>
         @endif
     </div>
-    <x-filament::hr />
+    <hr>
     <div>
         <div>
             <div x-data="{ isCardOpen: null }" class="flex flex-col">
-            @forelse($this->getLogs() as $key => $log)
+                @forelse($this->getLogs() as $key => $log)
                     <div
                             class="rounded-xl relative mb-2 py-3 px-3 bg-{{ $log['level_class'] }}"
                             :class="{'no-bottom-radius mb-0': isCardOpen == {{$key}}}"
@@ -42,8 +42,8 @@
                                 style="cursor: pointer;"
                                 class="block overflow-hidden rounded-t-xl text-white"
                         >
-                                <span>[{{ $log['date'] }}]</span>
-                                {{ Str::limit($log['text'], 100) }}
+                            <span>[{{ $log['date'] }}]</span>
+                            {{ Str::limit($log['text'], 100) }}
                         </a>
                     </div>
                     <div x-show="isCardOpen=={{$key}}" class="mb-2 px-4 py-4 bg-white dark:bg-gray-700 text-gray-900 dark:text-white rounded-xl no-top-radius">
@@ -56,36 +56,38 @@
                             @endif
                         </div>
                     </div>
-            @empty
-                <h3 class="text-center">{{ __('filament-log-manager::translations.no_logs') }}</h3>
-            @endforelse
+                @empty
+                    <h3 class="text-center">{{ __('filament-log-manager::translations.no_logs') }}</h3>
+                @endforelse
             </div>
         </div>
     </div>
-    <x-filament::modal id="filament-log-manager-delete-log-file-modal"
-                       :heading="__('filament-log-manager::translations.modal_delete_heading')"
-                       :subheading="__('filament-log-manager::translations.modal_delete_subheading')">
-        <x-slot name="actions">
-            <x-filament::modal.actions fullWidth="true">
-                <x-filament::button
-                        type="button"
-                        x-on:click="isOpen = false"
-                        color="secondary"
-                        outlined="true"
-                        class="filament-page-modal-button-action"
-                >
-                    {{ __('filament-log-manager::translations.modal_delete_action_cancel') }}
-                </x-filament::button>
-                <x-filament::button
-                        wire:click="delete"
-                        x-on:click="isOpen = false"
-                        type="button"
-                        color="danger"
-                        class="filament-page-modal-button-action"
-                >
-                    {{ __('filament-log-manager::translations.modal_delete_action_confirm') }}
-                </x-filament::button>
-            </x-filament::modal.actions>
+    <x-filament::modal id="filament-log-manager-delete-log-file-modal">
+        <x-slot name="heading">
+            {{ __('filament-log-manager::translations.modal_delete_heading') }}
+        </x-slot>
+        <x-slot name="description">
+            {{ __('filament-log-manager::translations.modal_delete_subheading') }}
+        </x-slot>
+        <x-slot name="footerActions">
+            <x-filament::button
+                    type="button"
+                    x-on:click="isOpen = false"
+                    color="secondary"
+                    outlined="true"
+                    class="filament-page-modal-button-action"
+            >
+                {{ __('filament-log-manager::translations.modal_delete_action_cancel') }}
+            </x-filament::button>
+            <x-filament::button
+                    wire:click="delete"
+                    x-on:click="isOpen = false"
+                    type="button"
+                    color="danger"
+                    class="filament-page-modal-button-action"
+            >
+                {{ __('filament-log-manager::translations.modal_delete_action_confirm') }}
+            </x-filament::button>
         </x-slot>
     </x-filament::modal>
 </x-filament::page>

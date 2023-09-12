@@ -9,8 +9,6 @@ use FilipFonal\FilamentLogManager\LogViewer;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\File;
-use Psr\Container\ContainerExceptionInterface;
-use Psr\Container\NotFoundExceptionInterface;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Finder\SplFileInfo;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
@@ -22,8 +20,6 @@ class Logs extends Page
     public ?string $logFile = null;
 
     /**
-     * @throws ContainerExceptionInterface
-     * @throws NotFoundExceptionInterface
      * @throws FileNotFoundException
      */
     public function getLogs(): Collection
@@ -106,22 +102,22 @@ class Logs extends Page
             ->in(config('filament-log-manager.logs_directory'));
     }
 
-    protected static function getNavigationIcon(): string
+    public static function getNavigationIcon(): string
     {
         return config('filament-log-manager.navigation_icon');
     }
 
-    protected static function getNavigationLabel(): string
+    public static function getNavigationLabel(): string
     {
         return __('filament-log-manager::translations.navigation_label');
     }
 
-    protected function getTitle(): string
+    public function getTitle(): string
     {
         return __('filament-log-manager::translations.title');
     }
 
-    protected static function getNavigationGroup(): ?string
+    public static function getNavigationGroup(): ?string
     {
         return config('filament-log-manager.navigation_group') ? __('filament-log-manager::translations.navigation_group') : null;
     }
