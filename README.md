@@ -23,19 +23,7 @@ You can install the package via composer:
 composer require filipfonal/filament-log-manager
 ```
 
-You can publish the config file with:
-
-```bash
-php artisan vendor:publish --tag="filament-log-manager-config"
-```
-
-You can publish translations files with:
-
-```bash
-php artisan vendor:publish --tag="filament-log-manager-translations"
-```
-
-Finally, register the plugin in the Filament Panel Provider (This is by default AdminPanelProvider.php)
+After that, you can register the plugin in the Filament Panel Provider (This is by default AdminPanelProvider.php)
 
 ```php
 public function panel(Panel $panel): Panel
@@ -46,6 +34,18 @@ public function panel(Panel $panel): Panel
             \FilipFonal\FilamentLogManager\FilamentLogManager::make(),
         ]);
 }
+```
+
+You can publish the config file with:
+
+```bash
+php artisan vendor:publish --tag="filament-log-manager-config"
+```
+
+You can publish translations files with:
+
+```bash
+php artisan vendor:publish --tag="filament-log-manager-translations"
 ```
 
 ## Usage
