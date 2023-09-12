@@ -2,6 +2,15 @@
 
 All notable changes to `filament-log-manager` will be documented in this file.
 
+## 2.0.0 - 2023-09-12
+
+### What's Changed
+
+- Support for Filament 3.x by @filipfonal in https://github.com/filipfonal/filament-log-manager/pull/21
+- Bump actions/checkout from 3 to 4 by @dependabot in https://github.com/filipfonal/filament-log-manager/pull/20
+
+**Full Changelog**: https://github.com/filipfonal/filament-log-manager/compare/1.2.1...2.0.0
+
 ## 1.3.0 - 2023-07-25
 
 ### What's Changed
