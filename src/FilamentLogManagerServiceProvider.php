@@ -3,7 +3,6 @@
 namespace FilipFonal\FilamentLogManager;
 
 use FilipFonal\FilamentLogManager\Commands\FilamentLogManagerCommand;
-use FilipFonal\FilamentLogManager\Pages\Logs;
 use Filament\Support\Assets\Css;
 use Filament\Support\Facades\FilamentAsset;
 use Spatie\LaravelPackageTools\Package;
