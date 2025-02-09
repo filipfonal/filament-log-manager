@@ -88,9 +88,15 @@ class Logs extends Page
 
     protected function getFileNames($files): Collection
     {
-        return collect($files)->mapWithKeys(function (SplFileInfo $file) {
+        $filesMap = collect($files)->mapWithKeys(function (SplFileInfo $file) {
             return [$file->getRealPath() => $file->getRealPath()];
         });
+
+        if(config('filament-log-manager.sort_files')){
+            $filesMap = $filesMap->sortDesc();
+        }
+
+        return $filesMap;
     }
 
     protected function getFinder(): Finder

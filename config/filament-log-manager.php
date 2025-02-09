@@ -33,4 +33,9 @@ return [
      * Allow set custom logs page class.
      */
     'page_class' => Logs::class,
+
+    /**
+     * Sort file names
+     */
+    'sort_files' => false,
 ];
