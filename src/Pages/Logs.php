@@ -77,7 +77,7 @@ class Logs extends Page
     {
         return [
             Select::make('logFile')
-                ->searchable()
+                ->searchable(config('filament-log-manager.enable_search'))
                 ->reactive()
                 ->disableLabel()
                 ->placeholder(__('filament-log-manager::translations.search_placeholder'))

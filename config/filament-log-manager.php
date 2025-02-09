@@ -33,4 +33,9 @@ return [
      * Allow set custom logs page class.
      */
     'page_class' => Logs::class,
+
+    /**
+     * Enable searching
+     */
+    'enable_search' => true,
 ];
