@@ -81,7 +81,11 @@ class Logs extends Page
                 ->reactive()
                 ->disableLabel()
                 ->placeholder(__('filament-log-manager::translations.search_placeholder'))
-                ->options(fn () => $this->getFileNames($this->getFinder())->take(5))
+                ->options(
+                    config('filament-log-manager.allow_lazy_loading_files')
+                        ? fn () => $this->getFileNames($this->getFinder())->take(5)
+                        : $this->getFileNames($this->getFinder())->take(5)
+                )
                 ->getSearchResultsUsing(fn (string $query) => $this->getFileNames($this->getFinder()->name("*{$query}*"))),
         ];
     }

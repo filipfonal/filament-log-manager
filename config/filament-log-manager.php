@@ -33,4 +33,9 @@ return [
      * Allow set custom logs page class.
      */
     'page_class' => Logs::class,
+
+    /**
+     * Allow lazy-loading files.
+     */
+    'allow_lazy_loading_files' => true,
 ];
