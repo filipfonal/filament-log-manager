@@ -48,7 +48,7 @@ You can publish translations files with:
 php artisan vendor:publish --tag="filament-log-manager-translations"
 ```
 
-To ensure correct styling, ensure the logs blade file is included in your [panel's theme](https://filamentphp.com/docs/3.x/panels/themes#creating-a-custom-theme). See example below
+To ensure correct styling, make sure the logs blade file is included in your [panel's theme](https://filamentphp.com/docs/3.x/panels/themes#creating-a-custom-theme). See example below
 ```js
 import preset from '../../../vendor/filament/filament/tailwind.config.preset'
 
