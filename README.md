@@ -59,7 +59,6 @@ export default {
         './vendor/filipfonal/filament-log-manager/resources/views/pages/logs.blade.php',
         ...
     ],
-
     ...
     
 ```
