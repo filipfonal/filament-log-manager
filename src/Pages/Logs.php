@@ -22,9 +22,12 @@ class Logs extends Page
 
     public static function canAccess(): bool
     {
-        if (array_key_exists('view-logs' , Gate::abilities()) )
-            return Gate::allows('view-logs');
-
+        $permission = config('filament-log-manager.permissions.view_logs');
+        
+        if ($permission && array_key_exists($permission, Gate::abilities())) {
+            return Gate::allows($permission);
+        }
+        
         return true;
     }
 
