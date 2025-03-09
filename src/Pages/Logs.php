@@ -9,6 +9,7 @@ use FilipFonal\FilamentLogManager\LogViewer;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Gate;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Finder\SplFileInfo;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
@@ -18,6 +19,17 @@ class Logs extends Page
     protected static string $view = 'filament-log-manager::pages.logs';
 
     public ?string $logFile = null;
+
+    public static function canAccess(): bool
+    {
+        $permission = config('filament-log-manager.permissions.view_logs');
+        
+        if ($permission && array_key_exists($permission, Gate::abilities())) {
+            return Gate::allows($permission);
+        }
+        
+        return true;
+    }
 
     /**
      * @throws FileNotFoundException
