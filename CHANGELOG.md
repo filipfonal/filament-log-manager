@@ -2,6 +2,22 @@
 
 All notable changes to `filament-log-manager` will be documented in this file.
 
+## 2.1.0 - 2025-03-09
+
+### What's Changed
+
+* Bump aglipanci/laravel-pint-action from 2.4 to 2.5 by @dependabot in https://github.com/filipfonal/filament-log-manager/pull/40
+* Add tailwind config instruction by @damms005 in https://github.com/filipfonal/filament-log-manager/pull/34
+* add authorization to access the logs by @Cybrarist in https://github.com/filipfonal/filament-log-manager/pull/39
+* Bump dependabot/fetch-metadata from 2.2.0 to 2.3.0 by @dependabot in https://github.com/filipfonal/filament-log-manager/pull/41
+
+### New Contributors
+
+* @damms005 made their first contribution in https://github.com/filipfonal/filament-log-manager/pull/34
+* @Cybrarist made their first contribution in https://github.com/filipfonal/filament-log-manager/pull/39
+
+**Full Changelog**: https://github.com/filipfonal/filament-log-manager/compare/2.0.1...2.1.0
+
 ## 2.0.1 - 2025-03-01
 
 ### What's Changed
