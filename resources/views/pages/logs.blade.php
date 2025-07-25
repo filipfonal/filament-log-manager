@@ -1,7 +1,7 @@
 <x-filament::page>
     <div class="flex items-center justify-between">
         <div class="grow mr-2">
-            {{ $this->search }}
+            {{ $this->content }}
         </div>
         @if(config('filament-log-manager.allow_delete'))
             <div class="grow-none ml-2">

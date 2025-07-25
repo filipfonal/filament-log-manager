@@ -4,6 +4,7 @@ namespace FilipFonal\FilamentLogManager\Pages;
 
 use Exception;
 use Filament\Pages\Page;
+use Filament\Schemas\Schema;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Gate;
@@ -11,8 +12,8 @@ use Symfony\Component\Finder\Finder;
 use Filament\Forms\Components\Select;
 use Symfony\Component\Finder\SplFileInfo;
 use FilipFonal\FilamentLogManager\LogViewer;
-use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class Logs extends Page
 {
@@ -81,12 +82,9 @@ class Logs extends Page
     /**
      * @throws \Exception
      */
-    protected function getForms(): array
+    public function content(Schema $schema): Schema
     {
-        return [
-            'search' => $this->makeSchema()
-                ->schema($this->getFormSchema()),
-        ];
+        return $schema->schema($this->getFormSchema());
     }
 
     /**
@@ -107,9 +105,9 @@ class Logs extends Page
 
     protected function getFileNames($files): Collection
     {
-        return collect($files)->mapWithKeys(function (SplFileInfo $file) {
-            return [$file->getRealPath() => $file->getRealPath()];
-        });
+        return collect($files)
+            ->sortByDesc(fn (SplFileInfo $file) => $file->getFilename())
+            ->mapWithKeys(fn (SplFileInfo $file) => [$file->getRealPath() => $file->getRealPath()]);
     }
 
     protected function getFinder(): Finder
