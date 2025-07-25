@@ -11,14 +11,11 @@ use Symfony\Component\Finder\Finder;
 use Filament\Forms\Components\Select;
 use Symfony\Component\Finder\SplFileInfo;
 use FilipFonal\FilamentLogManager\LogViewer;
-use Filament\Forms\Concerns\InteractsWithForms;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
 
 class Logs extends Page
 {
-    use InteractsWithForms;
-
     public ?string $logFile = null;
 
     public function getView(): string
