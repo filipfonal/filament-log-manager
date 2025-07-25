@@ -3,8 +3,8 @@
 namespace FilipFonal\FilamentLogManager;
 
 use Exception;
-use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Support\Facades\File;
+use Illuminate\Contracts\Filesystem\FileNotFoundException;
 
 class LogViewer
 {

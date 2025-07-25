@@ -28,7 +28,7 @@
             </div>
         @endif
     </div>
-    <hr>
+    <hr class="border-gray-200 dark:border-gray-700">
     <div>
         <div>
             <div x-data="{ isCardOpen: null }" class="flex flex-col">
