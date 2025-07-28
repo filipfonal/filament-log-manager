@@ -2,8 +2,8 @@
 
 namespace FilipFonal\FilamentLogManager;
 
-use Filament\Contracts\Plugin;
 use Filament\Panel;
+use Filament\Contracts\Plugin;
 use FilipFonal\FilamentLogManager\Pages\Logs;
 
 class FilamentLogManager implements Plugin

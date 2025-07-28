@@ -1,10 +1,10 @@
 <x-filament::page>
     <div class="flex items-center justify-between">
-        <div class="w-full mr-2">
-            {{ $this->search }}
+        <div class="grow mr-2">
+            {{ $this->content }}
         </div>
         @if(config('filament-log-manager.allow_delete'))
-            <div class="w-auto ml-2">
+            <div class="grow-none ml-2">
                 <x-filament::button
                         x-on:click="window.dispatchEvent(new CustomEvent('open-modal', { detail: { id: 'filament-log-manager-delete-log-file-modal' } }));"
                         :disabled="is_null($this->logFile)"
@@ -16,7 +16,7 @@
             </div>
         @endif
         @if(config('filament-log-manager.allow_download'))
-            <div class="w-auto ml-2">
+            <div class="grow-none ml-2">
                 <x-filament::button
                         wire:click="download"
                         :disabled="is_null($this->logFile)"
@@ -28,7 +28,7 @@
             </div>
         @endif
     </div>
-    <hr>
+    <hr class="border-gray-200 dark:border-gray-700">
     <div>
         <div>
             <div x-data="{ isCardOpen: null }" class="flex flex-col">

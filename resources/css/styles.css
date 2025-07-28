@@ -23,3 +23,7 @@
 .mb-0 {
     margin-bottom: 0 !important;
 }
+
+hr.fi-log-manager-divider {
+    color: #e5e7eb;
+}

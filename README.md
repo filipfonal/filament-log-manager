@@ -13,6 +13,9 @@ A simple and clear interface to preview, download and delete Laravel log files u
 
 This package is tailored for [Filament Admin Panel](https://filamentphp.com/).
 
+> [!NOTE]
+> This package is designed for Filament V4 and above. If you are using an older version, please refer to the [v3 branch](https://github.com/filipfonal/filament-log-manager).
+
 Make sure you have installed the admin panel before you continue with the installation. You can check the [documentation here](https://filamentphp.com/docs/admin)
 
 ## Installation
@@ -20,8 +23,11 @@ Make sure you have installed the admin panel before you continue with the instal
 You can install the package via composer:
 
 ```bash
-composer require filipfonal/filament-log-manager
+composer config repositories.filipfonal/filament-log-manager vcs https://github.com/curder/filament-log-manager
+
+composer require filipfonal/filament-log-manager:dev-main
 ```
+
 
 After that, you can register the plugin in the Filament Panel Provider (This is by default AdminPanelProvider.php)
 
@@ -48,18 +54,14 @@ You can publish translations files with:
 php artisan vendor:publish --tag="filament-log-manager-translations"
 ```
 
-To ensure correct styling, make sure the logs blade file is included in your [panel's theme](https://filamentphp.com/docs/3.x/panels/themes#creating-a-custom-theme). See example below
+To ensure correct styling, make sure the logs blade file is included in your [panel's theme](https://filamentphp.com/docs/4.x/styling/overview#creating-a-custom-theme). See example below
 ```js
-import preset from '../../../vendor/filament/filament/tailwind.config.preset'
+// resources/css/filament/admin/theme.css
+@import '../../../../vendor/filament/filament/resources/css/theme.css';
 
-export default {
-    presets: [preset],
-    content: [
-        './app/Filament/**/*.php',
-        './vendor/filipfonal/filament-log-manager/resources/views/pages/logs.blade.php',
-        ...
-    ],
-    ...
+@source '../../../../app/Filament/**/*';
+@source '../../../../resources/views/filament/**/*';
+@source '../../../../vendor/filipfonal/filament-log-manager/resources/views/**/*';
 ```
 
 ## Usage
