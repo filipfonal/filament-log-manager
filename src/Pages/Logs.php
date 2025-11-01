@@ -40,7 +40,7 @@ class Logs extends Page
      */
     public function getLogs(): Collection
     {
-        if (! $this->logFile) {
+        if (!$this->logFile) {
             return collect([]);
         }
 
@@ -54,7 +54,7 @@ class Logs extends Page
      */
     public function download(): BinaryFileResponse
     {
-        if (! config('filament-log-manager.allow_download')) {
+        if (!config('filament-log-manager.allow_download')) {
             abort(403);
         }
 
@@ -66,7 +66,7 @@ class Logs extends Page
      */
     public function delete(): bool
     {
-        if (! config('filament-log-manager.allow_delete')) {
+        if (!config('filament-log-manager.allow_delete')) {
             abort(403);
         }
 
@@ -98,16 +98,16 @@ class Logs extends Page
                 ->reactive()
                 ->hiddenLabel()
                 ->placeholder(__('filament-log-manager::translations.search_placeholder'))
-                ->options(fn () => $this->getFileNames($this->getFinder())->take(5))
-                ->getSearchResultsUsing(fn (string $query) => $this->getFileNames($this->getFinder()->name("*{$query}*"))),
+                ->options(fn (): Collection => $this->getFileNames($this->getFinder())->take(5))
+                ->getSearchResultsUsing(fn (string $query): Collection => $this->getFileNames($this->getFinder()->name("*{$query}*"))),
         ];
     }
 
     protected function getFileNames($files): Collection
     {
         return collect($files)
-            ->sortByDesc(fn (SplFileInfo $file) => $file->getFilename())
-            ->mapWithKeys(fn (SplFileInfo $file) => [$file->getRealPath() => $file->getRealPath()]);
+            ->sortByDesc(fn (SplFileInfo $file): string => $file->getFilename())
+            ->mapWithKeys(fn (SplFileInfo $file): array => [$file->getRealPath() => $file->getRealPath()]);
     }
 
     protected function getFinder(): Finder

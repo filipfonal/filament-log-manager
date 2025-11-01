@@ -1,10 +1,10 @@
 <x-filament::page>
-    <div class="flex items-center justify-between">
-        <div class="grow mr-2">
+    <div class="fi-log-manager-toolbar">
+        <div class="fi-log-manager-toolbar-content">
             {{ $this->content }}
         </div>
         @if(config('filament-log-manager.allow_delete'))
-            <div class="grow-none ml-2">
+            <div class="fi-log-manager-toolbar-actions">
                 <x-filament::button
                         x-on:click="window.dispatchEvent(new CustomEvent('open-modal', { detail: { id: 'filament-log-manager-delete-log-file-modal' } }));"
                         :disabled="is_null($this->logFile)"
@@ -16,7 +16,7 @@
             </div>
         @endif
         @if(config('filament-log-manager.allow_download'))
-            <div class="grow-none ml-2">
+            <div class="fi-log-manager-toolbar-actions">
                 <x-filament::button
                         wire:click="download"
                         :disabled="is_null($this->logFile)"
@@ -28,36 +28,36 @@
             </div>
         @endif
     </div>
-    <hr class="border-gray-200 dark:border-gray-700">
+    <hr class="fi-log-manager-divider">
     <div>
         <div>
-            <div x-data="{ isCardOpen: null }" class="flex flex-col">
+            <div x-data="{ isCardOpen: null }" class="fi-log-manager-log-list">
                 @forelse($this->getLogs() as $key => $log)
                     <div
-                            class="rounded-xl relative mb-2 py-3 px-3 bg-{{ $log['level_class'] }}"
+                            class="fi-log-manager-log-card bg-{{ $log['level_class'] }}"
                             :class="{'no-bottom-radius mb-0': isCardOpen == {{$key}}}"
                     >
                         <a
                                 @click="isCardOpen = isCardOpen == {{$key}} ? null : {{$key}} "
                                 style="cursor: pointer;"
-                                class="block overflow-hidden rounded-t-xl text-white"
+                                class="fi-log-manager-log-summary"
                         >
                             <span>[{{ $log['date'] }}]</span>
                             {{ Str::limit($log['text'], 100) }}
                         </a>
                     </div>
-                    <div x-show="isCardOpen=={{$key}}" class="mb-2 px-4 py-4 bg-white dark:bg-gray-700 text-gray-900 dark:text-white rounded-xl no-top-radius">
+                    <div x-show="isCardOpen=={{$key}}" class="fi-log-manager-log-details no-top-radius">
                         <div>
                             <p>{{$log['text']}}</p>
                             @if(!empty($log['stack']))
-                                <div class="bg-gray-100 dark:bg-gray-900 mt-4 p-4 text-sm opacity-40">
+                                <div class="fi-log-manager-log-stack">
                                     <pre style="overflow-x: scroll;"><code>{{ trim($log['stack']) }}</code></pre>
                                 </div>
                             @endif
                         </div>
                     </div>
                 @empty
-                    <h3 class="text-center">{{ __('filament-log-manager::translations.no_logs') }}</h3>
+                    <h3 class="fi-log-manager-empty-state">{{ __('filament-log-manager::translations.no_logs') }}</h3>
                 @endforelse
             </div>
         </div>
