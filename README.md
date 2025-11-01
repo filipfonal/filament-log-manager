@@ -14,7 +14,13 @@ A simple and clear interface to preview, download and delete Laravel log files u
 This package is tailored for [Filament Admin Panel](https://filamentphp.com/).
 
 > [!NOTE]
-> This package is designed for Filament V4 and above. If you are using an older version, please refer to the [v3 branch](https://github.com/filipfonal/filament-log-manager).
+> This package is designed for Filament V4 and above. If you are using an older version, please refer to the correct tag version.
+
+| Plugin version | Compatible Filament version |
+| -------------- | --------------------------- |
+| 3.0.x          | Filament v4                 |
+| 2.1.0          | Filament v3                 |
+| 1.2.1          | Filament v2                 |
 
 Make sure you have installed the admin panel before you continue with the installation. You can check the [documentation here](https://filamentphp.com/docs/admin)
 
@@ -63,6 +69,7 @@ To ensure correct styling, make sure the logs blade file is included in your [pa
 @source '../../../../resources/views/filament/**/*';
 @source '../../../../vendor/filipfonal/filament-log-manager/resources/views/**/*';
 ```
+
 
 ## Usage
 
