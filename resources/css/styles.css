@@ -1,3 +1,69 @@
+.fi-log-manager-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.fi-log-manager-toolbar-content {
+    flex: 1 1 auto;
+    margin-right: 0.5rem;
+}
+
+.fi-log-manager-toolbar-actions {
+    flex: 0 0 auto;
+    margin-left: 0.5rem;
+}
+
+.fi-log-manager-log-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.fi-log-manager-log-card {
+    position: relative;
+    margin-bottom: 0.5rem;
+    padding: 0.75rem;
+    border-radius: 0.75rem;
+}
+
+.fi-log-manager-log-summary {
+    display: block;
+    overflow: hidden;
+    border-top-left-radius: 0.75rem;
+    border-top-right-radius: 0.75rem;
+    color: #ffffff;
+}
+
+.fi-log-manager-log-details {
+    margin-bottom: 0.5rem;
+    padding: 1rem;
+    border-radius: 0.75rem;
+    background-color: #ffffff;
+    color: #111827;
+}
+
+.dark .fi-log-manager-log-details {
+    background-color: #374151;
+    color: #ffffff;
+}
+
+.fi-log-manager-log-stack {
+    margin-top: 1rem;
+    padding: 1rem;
+    background-color: #f3f4f6;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    opacity: 0.4;
+}
+
+.dark .fi-log-manager-log-stack {
+    background-color: #111827;
+}
+
+.fi-log-manager-empty-state {
+    text-align: center;
+}
+
 .bg-danger {
     background-color: rgb(185 28 28);
 }
@@ -22,4 +88,13 @@
 
 .mb-0 {
     margin-bottom: 0 !important;
+}
+
+hr.fi-log-manager-divider {
+    border: 0;
+    border-top: 1px solid #e5e7eb;
+}
+
+.dark hr.fi-log-manager-divider {
+    border-color: #374151;
 }

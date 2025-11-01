@@ -13,17 +13,29 @@ A simple and clear interface to preview, download and delete Laravel log files u
 
 This package is tailored for [Filament Admin Panel](https://filamentphp.com/).
 
-Make sure you have installed the admin panel before you continue with the installation. You can check the [documentation here](https://filamentphp.com/docs/admin)
+> [!NOTE]
+> This package targets Filament v4. Use the matrix below to pick the right release for earlier Filament versions.
+
+| Filament version | Recommended plugin version |
+| ---------------- | -------------------------- |
+| v4               | 3.x                      |
+| v3               | 2.1.0                      |
+| v2               | 1.2.1                      |
+
+Install the admin panel before you continue with the installation. You can check the [documentation here](https://filamentphp.com/docs/admin).
 
 ## Installation
 
 You can install the package via composer:
 
 ```bash
-composer require filipfonal/filament-log-manager
+composer config repositories.filipfonal/filament-log-manager vcs https://github.com/curder/filament-log-manager
+
+composer require filipfonal/filament-log-manager:dev-main
 ```
 
-After that, you can register the plugin in the Filament Panel Provider (This is by default AdminPanelProvider.php)
+
+After that, register the plugin in your Filament Panel Provider (by default `App\Providers\Filament\AdminPanelProvider`).
 
 ```php
 public function panel(Panel $panel): Panel
@@ -42,24 +54,10 @@ You can publish the config file with:
 php artisan vendor:publish --tag="filament-log-manager-config"
 ```
 
-You can publish translations files with:
+You can publish the translation files with:
 
 ```bash
 php artisan vendor:publish --tag="filament-log-manager-translations"
-```
-
-To ensure correct styling, make sure the logs blade file is included in your [panel's theme](https://filamentphp.com/docs/3.x/panels/themes#creating-a-custom-theme). See example below
-```js
-import preset from '../../../vendor/filament/filament/tailwind.config.preset'
-
-export default {
-    presets: [preset],
-    content: [
-        './app/Filament/**/*.php',
-        './vendor/filipfonal/filament-log-manager/resources/views/pages/logs.blade.php',
-        ...
-    ],
-    ...
 ```
 
 ## Usage

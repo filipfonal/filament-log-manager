@@ -3,22 +3,26 @@
 namespace FilipFonal\FilamentLogManager\Pages;
 
 use Exception;
-use Filament\Forms\Components\Select;
 use Filament\Pages\Page;
-use FilipFonal\FilamentLogManager\LogViewer;
-use Illuminate\Contracts\Filesystem\FileNotFoundException;
+use Filament\Schemas\Schema;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Gate;
 use Symfony\Component\Finder\Finder;
+use Filament\Forms\Components\Select;
 use Symfony\Component\Finder\SplFileInfo;
+use FilipFonal\FilamentLogManager\LogViewer;
+use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class Logs extends Page
 {
-    protected static string $view = 'filament-log-manager::pages.logs';
-
     public ?string $logFile = null;
+
+    public function getView(): string
+    {
+        return 'filament-log-manager::pages.logs';
+    }
 
     public static function canAccess(): bool
     {
@@ -75,34 +79,35 @@ class Logs extends Page
         abort(404, __('filament-log-manager::translations.no_such_file'));
     }
 
-    protected function getForms(): array
+    /**
+     * @throws \Exception
+     */
+    public function content(Schema $schema): Schema
     {
-        return [
-            'search' => $this->makeForm()
-                ->schema($this->getFormSchema())
-                ->model($this->getFormModel())
-                ->statePath($this->getFormStatePath()),
-        ];
+        return $schema->schema($this->getFormSchema());
     }
 
+    /**
+     * @throws \Exception
+     */
     protected function getFormSchema(): array
     {
         return [
             Select::make('logFile')
                 ->searchable()
                 ->reactive()
-                ->disableLabel()
+                ->hiddenLabel()
                 ->placeholder(__('filament-log-manager::translations.search_placeholder'))
-                ->options(fn () => $this->getFileNames($this->getFinder())->take(5))
-                ->getSearchResultsUsing(fn (string $query) => $this->getFileNames($this->getFinder()->name("*{$query}*"))),
+                ->options(fn (): Collection => $this->getFileNames($this->getFinder())->take(5))
+                ->getSearchResultsUsing(fn (string $query): Collection => $this->getFileNames($this->getFinder()->name("*{$query}*"))),
         ];
     }
 
     protected function getFileNames($files): Collection
     {
-        return collect($files)->mapWithKeys(function (SplFileInfo $file) {
-            return [$file->getRealPath() => $file->getRealPath()];
-        });
+        return collect($files)
+            ->sortByDesc(fn (SplFileInfo $file): string => $file->getFilename())
+            ->mapWithKeys(fn (SplFileInfo $file): array => [$file->getRealPath() => $file->getRealPath()]);
     }
 
     protected function getFinder(): Finder

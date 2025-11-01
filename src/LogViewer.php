@@ -3,8 +3,8 @@
 namespace FilipFonal\FilamentLogManager;
 
 use Exception;
-use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Support\Facades\File;
+use Illuminate\Contracts\Filesystem\FileNotFoundException;
 
 class LogViewer
 {
@@ -72,6 +72,7 @@ class LogViewer
                     if (strpos(strtolower($heading[$i]), '.'.$level) || strpos(strtolower($heading[$i]), $level.':')) {
                         $pattern = '/^\[(?P<date>(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}))\](?:.*?(?P<context>(\w+))\.|.*?)'.$level.': (?P<text>.*?)(?P<in_file> in .*?:[0-9]+)?$/i';
                         preg_match($pattern, $heading[$i], $current);
+
                         if (!isset($current['text'])) {
                             continue;
                         }
