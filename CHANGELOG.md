@@ -2,6 +2,18 @@
 
 All notable changes to `filament-log-manager` will be documented in this file.
 
+## 3.0.1 - 2025-11-24
+
+### What's Changed
+
+* Add Portuguese translations for log management by @samuelterra22 in https://github.com/filipfonal/filament-log-manager/pull/46
+
+### New Contributors
+
+* @samuelterra22 made their first contribution in https://github.com/filipfonal/filament-log-manager/pull/46
+
+**Full Changelog**: https://github.com/filipfonal/filament-log-manager/compare/3.0.0...3.0.1
+
 ## 3.0.0 - 2025-11-01
 
 ### What's Changed
